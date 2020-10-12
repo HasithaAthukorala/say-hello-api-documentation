@@ -1,0 +1,114 @@
+h1. Simple Inventory API This is a simple API
+
+*Version:* 5.0.0
+
+----
+
+{toc:printable=true|style=square|minLevel=2|maxLevel=3|type=list|outline=false|include=.*}
+
+h2. Endpoints
+
+    h3. otp
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /subscribe/otp
+    {code}
+    *Summary:* subscription request to the service
+    *Description:* By passing in the appropriate options, you can request to subscribe a particular user 
+
+
+    h4. Parameters
+
+
+
+        h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |msisdn |pass the mobile number of the user with or without 0 (07xxxxxxxx or 7xxxxxxxx) |(/) | |  |
+
+|otp |otp code |(/) | |  |
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     This is a sample response for a successfull request (*note that if the the request is successfull, the statusCode will begin with \&quot;S\&quot;)
+        {code:title=Response Type}
+array[Response]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "This is a sample response for a successfull request (*note that if the the request is successfull, the statusCode will begin with \"S\")",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/Response"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. subscribe
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /subscribe
+    {code}
+    *Summary:* subscription request to the service
+    *Description:* By passing in the appropriate options, you can request to subscribe a particular user 
+
+
+    h4. Parameters
+
+
+
+        h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |msisdn |pass the mobile number of the user with or without 0 (07xxxxxxxx or 7xxxxxxxx) |(/) | |  |
+
+|device |name of the device |(/) | |  |
+
+|os |operating system of the device |(/) | |  |
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     This is a sample response for a successfull request (*note that if the the request is successfull, the statusCode will begin with \&quot;S\&quot;)
+        {code:title=Response Type}
+array[Response]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "This is a sample response for a successfull request (*note that if the the request is successfull, the statusCode will begin with \"S\")",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/Response"
+    }
+  }
+}
+        {code}
+    ----
+
+h2. Models
+
+        h3. ErrorResponse
+        ||Field Name||Required||Type||Description||
+         |statusCode | |String | |
+ |statusDetail | |String | |
+        h3. Response
+        ||Field Name||Required||Type||Description||
+         |statusCode | |String | |
+ |statusDetail | |String | |
