@@ -1,0 +1,129 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a simple API",
+    "version" : "5.0.0",
+    "title" : "Simple Inventory API",
+    "contact" : {
+      "email" : "you@your-company.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/HasithaAthukorala/sayhello/5.0.0",
+  "tags" : [ {
+    "name" : "admin",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "dailyword",
+    "description" : "Daily word subscriptions and getters"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/subscribe" : {
+      "post" : {
+        "tags" : [ "dailyword" ],
+        "summary" : "subscription request to the service",
+        "description" : "By passing in the appropriate options, you can request to subscribe a particular user\n",
+        "operationId" : "subscribe",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "msisdn",
+          "in" : "query",
+          "description" : "pass the mobile number of the user with or without 0 (07xxxxxxxx or 7xxxxxxxx)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "device",
+          "in" : "query",
+          "description" : "name of the device",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "os",
+          "in" : "query",
+          "description" : "operating system of the device",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "This is a sample response for a successfull request (*note that if the the request is successfull, the statusCode will begin with \"S\")",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Response"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscribe/otp" : {
+      "post" : {
+        "tags" : [ "dailyword" ],
+        "summary" : "subscription request to the service",
+        "description" : "By passing in the appropriate options, you can request to subscribe a particular user\n",
+        "operationId" : "otp",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "msisdn",
+          "in" : "query",
+          "description" : "pass the mobile number of the user with or without 0 (07xxxxxxxx or 7xxxxxxxx)",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "otp",
+          "in" : "query",
+          "description" : "otp code",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "This is a sample response for a successfull request (*note that if the the request is successfull, the statusCode will begin with \"S\")",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Response"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Response" : {
+      "type" : "object",
+      "required" : [ "statusCode", "statusDetail" ],
+      "properties" : {
+        "statusCode" : {
+          "type" : "string",
+          "example" : "S1000"
+        },
+        "statusDetail" : {
+          "type" : "string",
+          "example" : "SUCCESS"
+        }
+      }
+    },
+    "ErrorResponse" : {
+      "type" : "object",
+      "required" : [ "statusCode", "statusDetail" ],
+      "properties" : {
+        "statusCode" : {
+          "type" : "string",
+          "example" : "E1351"
+        },
+        "statusDetail" : {
+          "type" : "string",
+          "example" : "user already registered"
+        }
+      }
+    }
+  }
+}
